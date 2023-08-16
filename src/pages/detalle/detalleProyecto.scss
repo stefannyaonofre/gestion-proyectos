@@ -3,6 +3,12 @@
     justify-content: space-around;
 }
 
+.container-list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .cards{
     width: 18rem;
 }
