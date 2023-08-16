@@ -1,47 +1,88 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./detalleProyecto.scss";
 import { getProject } from "../../services/projectsServices";
+import { getTareas } from "../../services/tareasServices";
+import CrearTarea from "../../components/crearTarea/CrearTarea";
 
 const DetalleProyecto = () => {
   const { idProyecto } = useParams();
+  const [proyecto, setProyecto] = useState();
+  const [tareas, setTareas] = useState();
+  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     project();
-    console.log(idProyecto);
+    filterTareas();
+    console.log(idProyecto)
   }, []);
 
   const project = async () => {
     try {
       const response = await getProject(idProyecto);
-      console.log(response);
+      setProyecto(response);
+      console.log(response)
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const filterTareas = async () => {
+    try {
+      const response = await getTareas();
+      const filter = response.filter((tarea) => tarea.projectId == idProyecto);
+      setTareas(filter);
+      console.log(filter)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleClick = () => {
+    setOpened(true);
+  };
+  const handleCloseForm = () => {
+    setOpened(false);
   };
 
   return (
     <>
       <section className="container-detalle">
         <div className="card cards">
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+          <div className="card-body d-flex flex-column justify-content-center">
+            {proyecto?.map((proyect) => (
+              <h3 className="card-title text-center" key={proyect.id}>
+                {proyect?.name}
+              </h3>
+            ))}
+            {proyecto?.map((proyect) => (
+              <p className="card-text" key={proyect.id}>
+                {proyect?.description}
+              </p>
+            ))}
           </div>
         </div>
         <div className="container-list">
-          <button type="button" className="btn btn-light">
+          {
+            opened ? (
+              <CrearTarea onClose={handleCloseForm}/>
+            ) : (
+              <button type="button" 
+              className="btn btn-light"
+              onClick={handleClick}
+              >
             Agregar Tarea +
           </button>
+            )
+          }
+          
           <ul className="list-group cards">
-            <li className="list-group-item">An item</li>
-            <li className="list-group-item">A second item</li>
-            <li className="list-group-item">A third item</li>
-            <li className="list-group-item">A fourth item</li>
-            <li className="list-group-item">And a fifth one</li>
+            {tareas?.map((tarea) => (
+              <li className="list-group-item" key={tarea.id}>
+                <h6>{tarea.tareaName}</h6>
+                <p>{tarea.descriptionTarea}</p>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
