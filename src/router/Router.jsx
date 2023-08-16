@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
 import DetalleProyecto from "../pages/detalle/DetalleProyecto";
@@ -8,11 +8,15 @@ import PublicRouter from "./PublicRouter";
 import PrivateRouter from "./PrivateRouter";
 import useSessionStorage from "../components/hooks/useSesionStorage";
 
+export const AppContext = createContext({});
+
 const Router = () => {
+
   const key = "user";
   const [isLogin, setIsLogin] = useState(false);
   const { getInfo } = useSessionStorage(key);
   const user = getInfo(key);
+   const [projects, setProjects] = useState()
 
   useEffect(() => {
     if (user?.name) {
@@ -22,7 +26,9 @@ const Router = () => {
     }
   }, [user]);
 
+
   return (
+    <AppContext.Provider value={{projects, setProjects}}>
     <BrowserRouter>
       <Routes>
         <Route path="/">
@@ -37,6 +43,7 @@ const Router = () => {
         </Route>
       </Routes>
     </BrowserRouter>
+    </AppContext.Provider>
   );
 };
 
