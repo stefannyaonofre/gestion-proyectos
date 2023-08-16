@@ -1,0 +1,13 @@
+@import "../../assets/styles/variables.scss";
+
+.navbar {
+    background-color: $blue;
+    .navbar-brand {
+        color: white;
+        margin-left: 1rem;
+        img {
+            margin-right: 5px;
+        }
+        
+    }
+}
