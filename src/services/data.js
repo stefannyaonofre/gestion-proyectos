@@ -1,7 +1,9 @@
-const URL_API = 'https://miniback-projects.onrender.com/'
 
-export const endpoint = {
-    users:`${URL_API}users`,
-    
+const URL = 'https://miniback-projects.onrender.com';
+
+export const endpoints = {
+    urlProjects: `${URL}/projects`,
+    urlTareas: `${URL}/tarea`,
+    users:`${URL}users`,
 
 }
