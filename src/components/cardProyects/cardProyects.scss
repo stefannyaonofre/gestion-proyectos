@@ -1,0 +1,138 @@
+@import "../../assets/styles/variables.scss";
+
+.home {
+    padding: 2rem 3rem;
+    .home-title {
+        display: flex;
+        justify-content: space-between;
+        h1 {
+            font-family: $font;
+            font-size: 2rem;
+            color: $blue;
+        }
+        .add {
+            border: none;
+            border-radius: 10px;
+            background-color: $purple;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            span {
+                font-size: 26px;
+                margin-left: 5px;
+                line-height: 0;
+            }
+        }
+        .new-form--container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100vw;
+            height: 100%;
+            background-color: rgba(23, 26, 31, 0.4);
+            z-index: 30;
+            .new-form {
+                background-color: white;
+                margin: 7% 33%;
+                padding: 4rem 5rem;
+                position: relative;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: baseline;
+                justify-content: baseline;
+                width: fit-content;
+                height: fit-content;
+                border-width: none;
+                border-style: none;
+                border-image: none;
+                .form-close {
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    background-color: $light-blue;
+                    border-radius: 50%;
+                    padding: 10px 12px;
+                    height: fit-content;
+                }
+                h2 {
+                    font-size: 3rem;
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: $blue;
+                }
+                    label {
+                        color: $blue;
+                        margin: 30px 20px 0;
+                        font-weight: 700;
+                    }
+                    input {
+                        border: none;
+                        border-bottom: 1px solid $purple;
+                        color: $blue;
+                        padding: 5px 0;
+                        margin: 0 20px;
+                        opacity: 80%;
+                    }
+                    input:focus{
+                        outline: none;
+                        border-bottom: $purple 2px solid;
+                        color: $blue;
+                    }
+                    button {
+                        border: none;
+                        background-color: $purple;
+                        color: white;
+                        border-radius: 5px;
+                        padding: 12px 0;
+                        font-weight: 500;
+                        font-size: 16px;
+                        margin-top: 40px;
+                        box-shadow: 0px 5px 18px -3px rgba(28, 80, 141, 0.3);
+                    }
+                }
+            }
+        
+    }
+    
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+        .card {
+            background-color: $blue;
+            border-radius: 10px;
+            min-height: 7rem;
+            max-height: fit-content;
+            width: 1fr;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            h3 {
+                font-family: $font;
+                color: white;
+                width: fit-content;
+            }
+            .delete {
+                display: none;
+                width: fit-content;
+                height: fit-content;
+                padding: 0 15px;
+                border: none;
+                border-radius: 5px;
+                background-color: $purple;
+                color: white;
+                font-size: 24px;
+            }
+        }
+        .card:hover {
+            background-color: rgb(17, 129, 159, 0.7);
+        }
+        .card:hover .delete {
+            display: inline-block;
+        }
+    }
+}
