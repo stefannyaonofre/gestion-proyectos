@@ -6,7 +6,7 @@ import eye from "/eye.svg";
 import eyeShow from "/eye-show.svg";
 import Swal from 'sweetalert2';
 import './loguin.scss';
-const Loguin = () => {
+const Loguin = ({signIn}) => {
     const key = "user";
   const [dataForm, handleChange, resetForm] = useForm();
   const [showPassword, setShowPassword] = useState(false); //estado para mostrar o no la contraseña
@@ -22,7 +22,7 @@ const Loguin = () => {
         "Has iniciado sesión exitosamente",
         "success"
       ).then(() => {
-        // signIn(true);
+        signIn(true);
         saveInfo(key, loggedUser);
       });
     } else {
@@ -44,6 +44,7 @@ const Loguin = () => {
         name="email"
         value={dataForm?.email || ""}
         type="text"
+        placeholder='Ingresa tu correo'
       />
       <label>Contraseña:</label>
       <input
@@ -57,6 +58,7 @@ const Loguin = () => {
       <img
         src={showPassword ? eyeShow : eye}
         onClick={() => setShowPassword(!showPassword)}
+        className="img-icon"
       />
       <button type="submit">Iniciar sesión</button>
     </form>
