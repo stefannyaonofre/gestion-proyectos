@@ -31,7 +31,7 @@ const Registro = () => {
   return (
     <main className="d-flex justify-content-center align-items-center vw-100 vh-150 fondo-color">
       <form className="formular card p-5 fondo-color" onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-3">
+        <div className="mb-1">
           <label className="form-label">
             <span>Nombre</span>
             <input
@@ -42,7 +42,7 @@ const Registro = () => {
             />
           </label>
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <label className="form-label">
             <span>Email</span>
             <input
@@ -53,7 +53,7 @@ const Registro = () => {
             />
           </label>
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <label className="form-label">
             <span>Contraseña</span>
             <input
@@ -64,7 +64,7 @@ const Registro = () => {
             />
           </label>
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <label className="form-label">
             <span>Imagen</span>
             <input
