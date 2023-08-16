@@ -48,10 +48,10 @@ const DetalleProyecto = () => {
   return (
     <>
       <section className="container-detalle">
-        <div className="card cards">
-          <div className="card-body d-flex flex-column justify-content-center">
+        <div className=" cards">
+          <div className="card-body ">
             {proyecto?.map((proyect) => (
-              <h3 className="card-title text-center" key={proyect.id}>
+              <h3 className="card-title" key={proyect.id}>
                 {proyect?.name}
               </h3>
             ))}

@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { saveTarea } from "../../services/tareasServices";
 import Swal from "sweetalert2";
+import close from "/images/close.svg"
+import "./crearTarea.scss"
 
 const CrearTarea = ({onClose}) => {
 
@@ -38,13 +40,16 @@ const CrearTarea = ({onClose}) => {
   }
 
   return (
-    <main className="d-flex justify-content-center align-items-center vw-50 vh-50">
+    <main className="d-flex justify-content-center align-items-center vw-50 vh-50 form-new-task">
+      <figure className='form-close' onClick={onClose}>
+        <img src={close} alt="Icon for close" />
+      </figure>
       {isFormOpen && (
         <form
-          className="formular card p-5"
+          className="formular card p-4"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="mb-3">
+          <div className="mb-1">
             <label className="form-label">
               <span>Nombre Tarea</span>
               <input

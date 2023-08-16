@@ -10,4 +10,17 @@
         }
         
     }
+    .admin-info {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        .admin-pic {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            object-fit: cover;
+        }}
 }

@@ -37,8 +37,10 @@ const Router = () => {
           </Route>
 
           <Route element={<PrivateRouter isAutenticated={isLogin} />}>
-            <Route index element={<CardProyects />} />
-            <Route path=":idProyecto" element={<DetalleProyecto />} />
+            <Route path="/" element={<Home />}>
+              <Route index element={<CardProyects />} />
+              <Route path=":idProyecto" element={<DetalleProyecto />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

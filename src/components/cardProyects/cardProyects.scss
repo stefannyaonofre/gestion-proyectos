@@ -40,6 +40,13 @@
                 border-radius: 10px;
                 display: flex;
                 flex-direction: column;
+                align-items: baseline;
+                justify-content: baseline;
+                width: fit-content;
+                height: fit-content;
+                border-width: none;
+                border-style: none;
+                border-image: none;
                 .form-close {
                     position: absolute;
                     top: -20px;
