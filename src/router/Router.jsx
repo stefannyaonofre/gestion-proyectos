@@ -7,6 +7,7 @@ import Loguin from "../pages/loguin/Loguin";
 import PublicRouter from "./PublicRouter";
 import PrivateRouter from "./PrivateRouter";
 import useSessionStorage from "../components/hooks/useSesionStorage";
+import Registro from "../pages/registro/Registro";
 
 export const AppContext = createContext({});
 
@@ -34,6 +35,7 @@ const Router = () => {
         <Route path="/">
           <Route element={<PublicRouter isAutenticated={isLogin} />}>
             <Route path="/login" element={<Loguin signIn={setIsLogin} />} />
+            <Route path="registro" element={<Registro />}/>
           </Route>
 
           <Route element={<PrivateRouter isAutenticated={isLogin} />}>
