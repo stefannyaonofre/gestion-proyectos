@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
 import DetalleProyecto from "../pages/detalle/DetalleProyecto";
 import CardProyects from "../components/cardProyects/CardProyects";
+import Loguin from "../pages/loguin/Loguin";
+import PublicRouter from "./PublicRouter";
+import PrivateRouter from "./PrivateRouter";
+import useSessionStorage from "../components/hooks/useSesionStorage";
 
 const Router = () => {
+  const key = "user";
+  const [isLogin, setIsLogin] = useState(false);
+  const { getInfo } = useSessionStorage(key);
+  const user = getInfo(key);
+
+  useEffect(() => {
+    if (user?.name) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, [user]);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}>
-            <Route index element={<CardProyects/>}/>
-          <Route path=":idProyecto" element={<DetalleProyecto />} />
+        <Route path="/">
+          <Route element={<PublicRouter isAutenticated={isLogin} />}>
+            <Route path="/login" element={<Loguin signIn={setIsLogin} />} />
+          </Route>
+
+          <Route element={<PrivateRouter isAutenticated={isLogin} />}>
+            <Route index element={<CardProyects />} />
+            <Route path=":idProyecto" element={<DetalleProyecto />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
@@ -18,3 +41,14 @@ const Router = () => {
 };
 
 export default Router;
+
+{
+  /* <Routes>
+        <Route path="/" element={<Home />}>
+            <Route index element={<CardProyects/>}/>
+          <Route path=":idProyecto" element={<DetalleProyecto />} />
+
+          
+        </Route>
+      </Routes> */
+}
